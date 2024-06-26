@@ -47,6 +47,10 @@ class ListScreenController extends GetxController {
     }
   }
 
+  void remove(Friend friend) {
+    _friends.remove(friend);
+  }
+
   List<Friend> get friends => _friends;
   bool get firstLoadRealized => _firstLoadRealized.value;
   bool get loadingMoreFriends => _loadingMoreFriends.value;

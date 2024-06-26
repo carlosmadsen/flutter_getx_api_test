@@ -3,8 +3,8 @@ import 'package:flutter_scroll_api_test/components/friend_card.dart';
 import 'package:flutter_scroll_api_test/components/loading.dart';
 import 'package:flutter_scroll_api_test/components/message.dart';
 import 'package:flutter_scroll_api_test/entity/friend.dart';
+import 'package:flutter_scroll_api_test/screens/list_screen_binding.dart';
 import 'package:flutter_scroll_api_test/screens/list_screen_controller.dart';
-import 'package:flutter_scroll_api_test/services/friend_service.dart';
 import 'package:get/get.dart';
 
 class ListScreen extends StatefulWidget {
@@ -22,9 +22,8 @@ class _ListScreenState extends State<ListScreen> {
   void initState() {
     super.initState();
     _scrollController.addListener(_onScroll);
-    _controller = ListScreenController(
-      service: FriendService(),
-    );
+    setUpListScreen();
+    _controller = Get.find<ListScreenController>();
     _controller.findAll();
   }
 
@@ -57,7 +56,10 @@ class _ListScreenState extends State<ListScreen> {
                         itemCount: _controller.friends.length,
                         itemBuilder: (BuildContext context, int index) {
                           final Friend friend = _controller.friends[index];
-                          return FriendCard(friend: friend);
+                          return FriendCard(
+                            friend: friend,
+                            controller: _controller,
+                          );
                         }),
                   ),
                   _controller.loadingMoreFriends
