@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_scroll_api_test/screens/list_screen.dart';
+import 'package:get/get.dart';
+import 'package:flutter_scroll_api_test/core/routes/app_pages.dart';
+import 'package:flutter_scroll_api_test/core/routes/app_routes.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,12 +12,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: ListScreen(),
+    return GetMaterialApp(
+      initialRoute: AppRoutes.list,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
         ),
       ),
+      getPages: AppPages.pages,
+      //initialBinding: AppBinding(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:flutter_scroll_api_test/entity/friend.dart';
+import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 import 'package:dio/dio.dart';
 
 class FriendService {

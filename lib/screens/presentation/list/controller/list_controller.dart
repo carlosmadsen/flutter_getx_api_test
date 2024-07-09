@@ -1,8 +1,9 @@
-import 'package:flutter_scroll_api_test/entity/friend.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 import 'package:flutter_scroll_api_test/services/friend_service.dart';
 import 'package:get/get.dart';
 
-class ListScreenController extends GetxController {
+class ListController extends GetxController {
   final FriendService service;
   final List<Friend> _friends = <Friend>[].obs;
 
@@ -12,7 +13,31 @@ class ListScreenController extends GetxController {
   final RxBool _showGoBackButton = false.obs;
   final RxBool _continueRequest = true.obs;
 
-  ListScreenController({required this.service});
+  final ScrollController scrollController = ScrollController();
+
+  ListController({required this.service});
+
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_onScroll);
+    findAll();
+  }
+
+  void _onScroll() {
+    if (loadingMoreFriends) {
+      return;
+    }
+    if (scrollController.position.atEdge) {
+      bool isTop = scrollController.position.pixels == 0;
+      if (isTop) {
+        print('Início do scroll: não faz nada.');
+      } else {
+        print('Chegou ao fim do scroll.');
+        nextPage();
+      }
+    }
+  }
 
   findAll() async {
     if (!_continueRequest.value) {
