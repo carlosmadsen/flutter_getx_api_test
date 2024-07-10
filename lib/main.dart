@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_scroll_api_test/app_binding.dart';
 import 'package:get/get.dart';
 import 'package:flutter_scroll_api_test/core/routes/app_pages.dart';
 import 'package:flutter_scroll_api_test/core/routes/app_routes.dart';
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       getPages: AppPages.pages,
-      //initialBinding: AppBinding(),
+      initialBinding: AppBinding(),
     );
   }
 }

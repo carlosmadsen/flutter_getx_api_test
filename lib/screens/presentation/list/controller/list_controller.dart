@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
-import 'package:flutter_scroll_api_test/services/friend_service.dart';
+import 'package:flutter_scroll_api_test/screens/domain/usecases/friend_find_all.dart';
 import 'package:get/get.dart';
 
 class ListController extends GetxController {
-  final FriendService service;
+  final FriendFindAll _friendFindAll;
   final List<Friend> _friends = <Friend>[].obs;
 
   final RxInt _page = 1.obs;
@@ -15,7 +15,7 @@ class ListController extends GetxController {
 
   final ScrollController scrollController = ScrollController();
 
-  ListController({required this.service});
+  ListController({required friendFindAll}) : _friendFindAll = friendFindAll;
 
   @override
   void onInit() {
@@ -50,7 +50,7 @@ class ListController extends GetxController {
 
     print('load list page: $_page ');
 
-    List<Friend> friendsAtualPage = await service.findAll(_page.value);
+    List<Friend> friendsAtualPage = await _friendFindAll.call(_page.value);
     if (friendsAtualPage.isEmpty) {
       _continueRequest.value = false;
       _showGoBackButton.value = true;

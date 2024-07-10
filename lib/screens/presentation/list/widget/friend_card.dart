@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 import 'package:flutter_scroll_api_test/screens/presentation/list/controller/list_controller.dart';
+import 'package:get/get.dart';
 
 class FriendCard extends StatelessWidget {
   final Friend friend;
-  //final ListController _controller;
 
-  const FriendCard(
-      {super.key,
-      required this.friend /*, required ListController controller*/}) /*: _controller = controller*/;
+  const FriendCard({super.key, required this.friend});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        //print("remover friend id: ${friend.id}");
-        //_controller.remove(friend);
+        if (Get.isRegistered<ListController>()) {
+          Get.find<ListController>().remove(friend);
+        }
       },
       child: Card(
         child: Padding(

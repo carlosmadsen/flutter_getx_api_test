@@ -1,5 +1,5 @@
+import 'package:flutter_scroll_api_test/screens/domain/usecases/friend_find_all.dart';
 import 'package:flutter_scroll_api_test/screens/presentation/list/controller/list_controller.dart';
-import 'package:flutter_scroll_api_test/services/friend_service.dart';
 import 'package:get/get.dart';
 
 class ListBinding extends Bindings {
@@ -7,7 +7,7 @@ class ListBinding extends Bindings {
   void dependencies() {
     Get.put<ListController>(
       ListController(
-        service: FriendService(),
+        friendFindAll: FriendFindAll(Get.find()),
       ),
     );
   }

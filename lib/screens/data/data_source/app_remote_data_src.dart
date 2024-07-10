@@ -1,14 +1,22 @@
-import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 
-class FriendService {
-  final Dio dio = Dio();
+abstract class AppRemoteDataSrc {
+  const AppRemoteDataSrc();
+
+  Future<List<Friend>> findAll(int page);
+}
+
+class AppRemoteDataSrcImpl extends AppRemoteDataSrc {
+  const AppRemoteDataSrcImpl(this._client);
+  final Dio _client;
   final limit = 10;
 
+  @override
   Future<List<Friend>> findAll(int page) async {
     List<Friend> list = [];
 
-    Response response = await dio.get(
+    Response response = await _client.get(
       'https://66720d10e083e62ee43de76e.mockapi.io/friends',
       queryParameters: {
         'page': page.toString(),
