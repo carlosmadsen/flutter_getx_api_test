@@ -25,10 +25,8 @@ class ListPage extends GetView<ListController> {
                             itemCount: controller.friends.length,
                             itemBuilder: (BuildContext context, int index) {
                               final Friend friend = controller.friends[index];
-                              //return Text("Nome: ${friend.name}");
                               return FriendCard(
                                 friend: friend,
-                                //controller: controller,
                               );
                             }),
                       ),

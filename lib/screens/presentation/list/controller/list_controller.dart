@@ -50,7 +50,17 @@ class ListController extends GetxController {
 
     print('load list page: $_page ');
 
-    List<Friend> friendsAtualPage = await _friendFindAll.call(_page.value);
+    List<Friend> friendsAtualPage = [];
+    final result = await _friendFindAll.call(_page.value);
+    result.fold(
+      (left) {
+        print(left.toString());
+      },
+      (right) {
+        friendsAtualPage = right;
+      },
+    );
+
     if (friendsAtualPage.isEmpty) {
       _continueRequest.value = false;
       _showGoBackButton.value = true;

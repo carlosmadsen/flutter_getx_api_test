@@ -1,11 +1,13 @@
+import 'package:flutter_scroll_api_test/core/util/type_def.dart';
+
 abstract class UsecaseWithParams<Type, Params> {
   const UsecaseWithParams();
 
-  Future<Type> call(Params params);
+  ResultFuture<Type> call(Params params);
 }
 
 abstract class UsecaseWithoutParams<Type> {
   const UsecaseWithoutParams();
 
-  Future<Type> call();
+  ResultFuture<Type> call();
 }

@@ -11,7 +11,7 @@ Para rodar esse projeto você pode criar um mockapi em https://mockapi.io/ com o
 
 Edite o arquivo ".env" colocando o url da api no atributo "apiBaseUrl" e o endpoint no atributo "endPointFriends".
 
-Por exemplo, se a url completa for "https://666d763623a3738f7cacc6e6a.mockapi.io/friends/" você deve preencher da seguinte forma: 
+Por exemplo, se a url completa for "https://66720d10e083e62ee43de76e.mockapi.io/friends/" você deve preencher da seguinte forma: 
 
 ```env
 apiBaseUrl=https://66720d10e083e62ee43de76e.mockapi.io/

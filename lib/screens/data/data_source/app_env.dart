@@ -6,6 +6,7 @@ class AppEnv {
   final DotEnv _env;
   Future<String> get apiBaseUrl async => await _get('apiBaseUrl');
   Future<String> get endPointFriends async => await _get('endPointFriends');
+  Future<String> get pageLimit async => await _get('pageLimit');
 
   Future<String> _get(String name) async {
     if (!_env.isInitialized) {
