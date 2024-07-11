@@ -51,7 +51,7 @@ class ListController extends GetxController {
     print('load list page: $_page ');
 
     List<Friend> friendsAtualPage = [];
-    final result = await _friendFindAll.call(_page.value);
+    final result = await _friendFindAll(_page.value);
     result.fold(
       (left) {
         print(left.toString());

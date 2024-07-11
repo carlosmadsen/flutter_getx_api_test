@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_scroll_api_test/core/util/image_service.dart';
 import 'package:flutter_scroll_api_test/screens/presentation/list/widget/friend_card.dart';
 import 'package:flutter_scroll_api_test/core/commons/widgets/loading.dart';
 import 'package:flutter_scroll_api_test/core/commons/widgets/message.dart';
@@ -27,6 +28,7 @@ class ListPage extends GetView<ListController> {
                               final Friend friend = controller.friends[index];
                               return FriendCard(
                                 friend: friend,
+                                image: ImageService(),
                               );
                             }),
                       ),

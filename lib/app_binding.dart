@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_scroll_api_test/screens/data/data_source/app_env.dart';
+import 'package:flutter_scroll_api_test/core/util/app_env.dart';
 import 'package:flutter_scroll_api_test/screens/data/data_source/app_remote_data_src.dart';
 import 'package:flutter_scroll_api_test/screens/data/repo/app_repo_impl.dart';
 import 'package:flutter_scroll_api_test/screens/domain/repo/app_repo.dart';

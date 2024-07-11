@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter_scroll_api_test/core/error/exceptions.dart';
-import 'package:flutter_scroll_api_test/screens/data/data_source/app_env.dart';
+import 'package:flutter_scroll_api_test/core/util/app_env.dart';
 import 'package:flutter_scroll_api_test/screens/domain/entity/friend.dart';
 import 'package:get/get.dart';
 
