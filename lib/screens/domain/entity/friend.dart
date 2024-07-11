@@ -5,7 +5,6 @@ class Friend extends Equatable {
   String name;
   String avatar;
   String user;
-  int nrAmigos = 0;
 
   Friend({
     this.id,
