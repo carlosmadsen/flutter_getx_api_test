@@ -25,7 +25,6 @@ void main() {
     final result = await usecase(1);
 
     List<Friend> listResult = [];
-
     result.fold(
       (left) {},
       (right) {

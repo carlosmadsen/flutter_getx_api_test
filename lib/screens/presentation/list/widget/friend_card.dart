@@ -23,7 +23,7 @@ class FriendCard extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              image.getImage(friend),
+              /*image.getImage(friend),*/
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Column(

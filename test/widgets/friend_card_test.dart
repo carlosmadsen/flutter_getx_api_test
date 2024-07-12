@@ -6,13 +6,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
-
-class ImageServiceMock extends Mock implements ImageService {}
+import '../helpers/image_service_mock.dart';
 
 void main() {
   testWidgets("Friend Card", (tester) async {
-    final imageService = ImageServiceMock();
-
     const String name = "Denise Gutkowski";
     const String user = "Cole60";
     const String avatarAsset = 'assets/imgs/avatar.jpg';
@@ -24,6 +21,9 @@ void main() {
       user: user,
     );
 
+    ImageService imageService = ImageServiceMock();
+    ImageServiceMock.whenGetImage(imageService, friend, avatarAsset);
+
     when(() => imageService.getImage(friend))
         .thenAnswer((_) => Image.asset(avatarAsset, width: 70, height: 70));
 
@@ -34,6 +34,8 @@ void main() {
         image: imageService,
       )),
     ));
+    //aguradando o todo o render da página
+    await tester.pumpAndSettle();
 
     final findName = find.text(name);
     final findUser = find.text(user);

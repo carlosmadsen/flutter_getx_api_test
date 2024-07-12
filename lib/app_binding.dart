@@ -8,14 +8,18 @@ import 'package:get/get.dart';
 
 class AppBinding extends Bindings {
   @override
-  void dependencies() {
-    Get.put<AppRepo>(
-      AppRepoImpl(
-        AppRemoteDataSrcImpl(
-          Dio(),
+  void dependencies({AppRepo? appRepo}) {
+    if (appRepo != null) {
+      Get.put<AppRepo>(appRepo);
+    } else {
+      Get.put<AppRepo>(
+        AppRepoImpl(
+          AppRemoteDataSrcImpl(
+            Dio(),
+          ),
         ),
-      ),
-    );
+      );
+    }
 
     Get.put<AppEnv>(
       AppEnv(
